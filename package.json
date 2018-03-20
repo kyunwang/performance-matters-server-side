@@ -1,0 +1,47 @@
+{
+  "name": "religious-buildings-amsterdam-server-side",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node server.js",
+    "eslint:init": "eslint --init",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kyunwang/performance-matters-server-side.git"
+  },
+  "author": "Kang Yun Wang - Kevin Wang <kevinwang8011@hotmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kyunwang/performance-matters-server-side/issues"
+  },
+  "homepage": "https://github.com/kyunwang/performance-matters-server-side#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "pug": "^2.0.1",
+    "request": "^2.85.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "dotenv": "^5.0.1",
+    "eslint": "^4.19.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "nodemon": "^1.17.2"
+  },
+  "babel": {
+    "presets": [
+      "env",
+      "stage-3"
+    ]
+  }
+}
