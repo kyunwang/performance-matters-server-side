@@ -1,0 +1,12 @@
+extends layout
+
+include mixins/_buildingCard
+
+block content
+	p This is custom content
+	each building in data
+		//- p= building.itemLabel.value
+		+buildingCard(building)
+
+	//- pre #{h.dump(data)}
+	//- code= h

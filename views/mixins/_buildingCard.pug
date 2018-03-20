@@ -1,0 +1,5 @@
+mixin buildingCard(building = {})
+	.building
+		- var buildingName = building.itemLabel.value 
+		a(href=`/building/${buildingName}`)
+			p #{buildingName}

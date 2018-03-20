@@ -6,6 +6,8 @@ var app = express();
 // Can't think of a good name....
 var mainRoute = require('./routes');
 
+var helpers = require('./helpers');
+
 // Require the dotenv file
 require('dotenv').config({ path: './vars.env' });
 
@@ -24,6 +26,13 @@ app
 			maxAge: 300000 // 5 Minute
 		}
 	}))
+	// pass variables to our templates + all requests
+	// Locals are all the vars available in the template
+	// From wesbos
+	.use((req, res, next) => {
+		res.locals.h = helpers;
+		next();
+	})
 	.use('/', mainRoute)
 
 // Define port to listen to
