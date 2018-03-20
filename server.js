@@ -14,11 +14,6 @@ app
 	.set('views', 'views')
 	.use('/', mainRoute)
 
-// app.get('/', function (req, res) {
-//   res.send('Hello Mate!');
-// })
-
 app.listen(3500, function () {
-  console.log('server is running on port 3500');
+	console.log('server is running on port 3500');
 })
-
