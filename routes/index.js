@@ -10,6 +10,7 @@ var buildingController = require('../controllers/buildingController');
 
 // define the home page route
 router.get('/', buildingController.homePage);
+router.post('/', buildingController.getBuildingsByKey);
 router.get('/building/:name', buildingController.detailPage);
 
 module.exports = router;

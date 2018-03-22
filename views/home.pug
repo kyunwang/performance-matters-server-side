@@ -3,9 +3,14 @@ extends layout
 include mixins/_buildingCard
 
 block content
+	form(action="/" method="POST")
+		each key in filterKeys
+			input(id=`key-${key}` type="checkbox", name="key" checked value=key)
+			label(for=`key-${key}`) #{key}
+
+		input(type="submit", value="filter")
+
 	//- pre #{h.dump(data)}
 	each building in data
 		//- p= building.itemLabel.value
 		+buildingCard(building)
-
-	//- code= h

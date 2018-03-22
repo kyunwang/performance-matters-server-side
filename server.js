@@ -1,5 +1,6 @@
 var express = require('express');
 var session = require('express-session');
+var bodyParser = require('body-parser');
 var path = require('path');
 
 var app = express();
@@ -17,6 +18,8 @@ app
 	.use(express.static(path.join(__dirname, '/public/')))
 	.set('view engine', 'pug')
 	.set('views', 'views')
+	.use(bodyParser.json())
+	.use(bodyParser.urlencoded({ extended: false }))
 	.use(session({
 		secret: process.env.SESSION_SECRET,
 		resave: false,
