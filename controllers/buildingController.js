@@ -115,11 +115,36 @@ exports.detailPage = function (req, res) {
 
 exports.getBuildingsByKey = function (req, res) {
 	var data = req.session.data.filter(function (item) {
+	// req.session.data = req.session.data.filter(function (item) {
 		return req.body.key.includes(item.type.value);
 	});
 
+	var activeKeys = data.map(item => item.type.value).filter((d, i, self) => i === self.indexOf(d));
+
 	res.render('home', {
 		data: data,
-		filterKeys: req.session.filterKeys
+		filterKeys: req.session.filterKeys,
+		activeKeys: activeKeys
 	});
+
+	// res.redirect('/buildings');
 }
+
+// exports.filteredView = function (req, res) {
+// 	if (!req.session.activeKeys) {
+// 		res.redirect('/');
+// 	}
+
+// 	var data = req.session.data.filter(function (item) {
+// 		// req.session.data = req.session.data.filter(function (item) {
+// 		return req.session.activeKeys.includes(item.type.value);
+// 	});
+
+// 	res.send(req.session.activeKeys)
+
+// 	res.render('home', {
+// 		data: data,
+// 		filterKeys: req.session.filterKeys,
+// 		activeKeys: req.session.activeKeys
+// 	});
+// }

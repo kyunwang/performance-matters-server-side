@@ -3,9 +3,9 @@ extends layout
 include mixins/_buildingCard
 
 block content
-	form(action="/" method="POST")
+	form(action="/filter-buildings" method="POST")
 		each key in filterKeys
-			input(id=`key-${key}` type="checkbox", name="key" checked value=key)
+			input(id=`key-${key}` type="checkbox", name="key" value=key checked=activeKeys ? activeKeys.includes(key) : !!key)
 			label(for=`key-${key}`) #{key}
 
 		input(type="submit", value="filter")
