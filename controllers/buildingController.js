@@ -114,14 +114,12 @@ exports.detailPage = function (req, res) {
 }
 
 exports.getBuildingsByKey = function (req, res) {
-	console.log(req.body);
+	var data = req.session.data.filter(function (item) {
+		return req.body.key.includes(item.type.value);
+	});
 
-	// var data =
-	// res.send('see');
-	res.send(req.body);
-	// res.render('home', {
-	// 	data: req.session.data,
-	// 	filterKeys: req.session.filterKeys
-	// });
-	// res.redirect('/buildings');
+	res.render('home', {
+		data: data,
+		filterKeys: req.session.filterKeys
+	});
 }
