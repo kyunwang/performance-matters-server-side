@@ -8,7 +8,8 @@ block content
 			input(id=`key-${key}` type="checkbox", name="key" value=key checked=activeKeys ? activeKeys.includes(key) : !!key)
 			label(for=`key-${key}`) #{key}
 
-		input(type="submit", value="filter")
+		noscript
+			input(type="submit", value="filter")
 
 	//- pre #{h.dump(data)}
 	each building in data
