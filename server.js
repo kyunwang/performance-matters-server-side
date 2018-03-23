@@ -1,6 +1,8 @@
 var express = require('express');
 var session = require('express-session');
 var bodyParser = require('body-parser');
+var compression = require('compression');
+
 var path = require('path');
 
 var app = express();
@@ -13,12 +15,14 @@ var helpers = require('./helpers');
 // Require the dotenv file
 require('dotenv').config({ path: './vars.env' });
 
-app
-	// .use(express.static('public'))
-	.use('/public', express.static(path.join(__dirname, '/dist/'), { maxAge: '31d' }))
-	.set('view engine', 'pug')
-	.set('views', 'views')
-	.use(bodyParser.json())
+// Set views
+app.set('view engine', 'pug')
+	.set('views', 'views');
+
+// Set static route
+app.use('/public', express.static(path.join(__dirname, '/dist/'), { maxAge: '31d' }));
+
+app.use(bodyParser.json())
 	.use(bodyParser.urlencoded({ extended: false }))
 	.use(session({
 		secret: process.env.SESSION_SECRET,
@@ -34,6 +38,7 @@ app
 			maxAge: 600000 // 10 Minute
 		}
 	}))
+	.use(compression())
 	// pass variables to our templates + all requests
 	// Locals are all the vars available in the template
 	// From wesbos

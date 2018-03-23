@@ -7,6 +7,7 @@ Try to use only ES5 (will use template literals somethimes cus..... dang concate
 - [Building](#building)
 - [Tooling](#tooling)
 	- [Npm scripts](#scripts)
+- [Optimalisation](#optimalisation)
 - [Empty as for now](#)
 
 ## Getting started
@@ -58,7 +59,11 @@ Same oll' but now we only `bundle` the JS and `uglify/minify` it without startin
 This guy checked on updated in `origin` and pulls changes from the `origin/<current-branch>`
 
 
+## Optimalisation
 
+1. The bundling of Javascript and minifying it. Using `uglify-js`
+2. Using the `compression` package
+3. Minify css
 
 
 -------- Random stuff below ^^
