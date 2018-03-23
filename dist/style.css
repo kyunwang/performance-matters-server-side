@@ -52,6 +52,7 @@ a:focus {
 }
 
 [type="checkbox"] + label {
+	display: inline-block;
 	color: #9f9f9f;
 }
 
