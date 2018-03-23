@@ -26,9 +26,6 @@
     "request": "^2.85.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-stage-3": "^6.24.1",
     "dotenv": "^5.0.1",
     "eslint": "^4.19.0",
     "eslint-config-standard": "^11.0.0",
@@ -38,10 +35,5 @@
     "eslint-plugin-standard": "^3.0.1",
     "nodemon": "^1.17.2"
   },
-  "babel": {
-    "presets": [
-      "env",
-      "stage-3"
-    ]
-  }
+  "babel": {}
 }

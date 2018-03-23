@@ -1,5 +1,3 @@
-module.exports = {
-	init () {
-
-	}
-}
+module.exports = (function () {
+	console.log('sup');
+})();
