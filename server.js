@@ -15,8 +15,7 @@ require('dotenv').config({ path: './vars.env' });
 
 app
 	// .use(express.static('public'))
-	.use('/public', express.static(path.join(__dirname, '/public/')))
-	.use('/public', express.static(path.join(__dirname, '/dist/')))
+	.use('/public', express.static(path.join(__dirname, '/dist/'), { maxAge: '31d' }))
 	.set('view engine', 'pug')
 	.set('views', 'views')
 	.use(bodyParser.json())
