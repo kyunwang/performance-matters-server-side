@@ -1,4 +1,4 @@
 mixin buildingCard(building = {})
 	- var buildingName = building.itemLabel.value 
-	a(href=`/building/${buildingName}`).building
+	a(href=`/building/${buildingName}`, data-type=building.type.value).building
 		= buildingName
