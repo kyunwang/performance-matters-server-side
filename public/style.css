@@ -22,6 +22,11 @@ main {
 	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
+form {
+	position: relative;
+	padding: 1em 1.5em;
+}
+
 @media all and (min-width: 42em) {
 	body {
 		margin: 3em auto;
@@ -33,7 +38,25 @@ a:visited,
 a:focus {
 	color: #3f3f3f;
 	text-decoration: none;
+}
 
+[type="checkbox"] {
+	position: absolute;
+	left: 999999px;
+	visibility: hidden;
+	display: none;
+}
+
+[type="checkbox"] + label {
+	color: #9f9f9f;
+}
+
+[type="checkbox"] + label:not(:first-of-type) {
+	margin-left: 2em;
+}
+
+[type="checkbox"]:checked + label {
+  color: #3f3f3f;
 }
 
 .building {

@@ -28,6 +28,7 @@ var helpers = {
 				return Number(item.replace(/[^0-9\.]+/g, ''));
 			})
 
+			// Not needed probably
 			var geoTemplate = {
 				type: 'Feature',
 				geometry: {

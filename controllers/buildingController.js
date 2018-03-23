@@ -7,62 +7,63 @@ exports.homePage = function (req, res) {
 	if (req.session.data) {
 	// res.send('Got the data right here');
 		res.render('home', {
-			data: req.session.data
+			data: req.session.data,
+			filterKeys: req.session.filterKeys
 		});
 	} else {
 		var query = `
-		SELECT ?item ?itemLabel ?image ?coordinate_location ?type WHERE {
-		SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],nl". }
-			{  
-				?item wdt:P31 wd:Q32815 .
-				?item wdt:P131 wd:Q9899 .
-				BIND('mosque' AS ?type) .
-				OPTIONAL {
-					?item wdt:P18 ?image .
-					?item wdt:P625 ?coordinate_location .
+			SELECT ?item ?itemLabel ?image ?coordinate_location ?type WHERE {
+			SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],nl". }
+				{  
+					?item wdt:P31 wd:Q32815 .
+					?item wdt:P131 wd:Q9899 .
+					BIND('mosque' AS ?type) .
+					OPTIONAL {
+						?item wdt:P18 ?image .
+						?item wdt:P625 ?coordinate_location .
+					}
+				} UNION {
+					?item wdt:P31 wd:Q16970 .
+					?item wdt:P131 wd:Q9899 .
+					BIND('church' AS ?type) .
+					OPTIONAL {
+						?item wdt:P18 ?image .
+						?item wdt:P625 ?coordinate_location .
+					}
+				} UNION {
+					?item wdt:P31 wd:Q697295 .
+					?item wdt:P131 wd:Q9899 .
+					BIND('shrine' AS ?type) .
+					OPTIONAL {
+						?item wdt:P18 ?image .
+						?item wdt:P625 ?coordinate_location .
+					}
+				} UNION {
+					?item wdt:P31 wd:Q44539 .
+					?item wdt:P131 wd:Q9899 .
+					BIND('temple' AS ?type) .
+					OPTIONAL {
+						?item wdt:P18 ?image .
+						?item wdt:P625 ?coordinate_location .
+					}
+				} UNION {
+					?item wdt:P31 wd:Q44613 .
+					?item wdt:P131 wd:Q9899 .
+					BIND('monastery' AS ?type) .
+					OPTIONAL {
+						?item wdt:P18 ?image .
+						?item wdt:P625 ?coordinate_location .
+					}
+				} UNION {
+					?item wdt:P31 wd:Q34627 .
+					?item wdt:P131 wd:Q9899 .
+					BIND('synagogue' AS ?type) .
+					OPTIONAL {
+						?item wdt:P18 ?image .
+						?item wdt:P625 ?coordinate_location .
+					}
 				}
-			} UNION {
-				?item wdt:P31 wd:Q16970 .
-				?item wdt:P131 wd:Q9899 .
-				BIND('church' AS ?type) .
-				OPTIONAL {
-					?item wdt:P18 ?image .
-					?item wdt:P625 ?coordinate_location .
-				}
-			} UNION {
-				?item wdt:P31 wd:Q697295 .
-				?item wdt:P131 wd:Q9899 .
-				BIND('shrine' AS ?type) .
-				OPTIONAL {
-					?item wdt:P18 ?image .
-					?item wdt:P625 ?coordinate_location .
-				}
-			} UNION {
-				?item wdt:P31 wd:Q44539 .
-				?item wdt:P131 wd:Q9899 .
-				BIND('temple' AS ?type) .
-				OPTIONAL {
-					?item wdt:P18 ?image .
-					?item wdt:P625 ?coordinate_location .
-				}
-			} UNION {
-				?item wdt:P31 wd:Q44613 .
-				?item wdt:P131 wd:Q9899 .
-				BIND('monastery' AS ?type) .
-				OPTIONAL {
-					?item wdt:P18 ?image .
-					?item wdt:P625 ?coordinate_location .
-				}
-			} UNION {
-				?item wdt:P31 wd:Q34627 .
-				?item wdt:P131 wd:Q9899 .
-				BIND('synagogue' AS ?type) .
-				OPTIONAL {
-					?item wdt:P18 ?image .
-					?item wdt:P625 ?coordinate_location .
-				}
-			}
-		}`
+			}`
 		var endpointUrl = 'https://query.wikidata.org/sparql';
 		var headers = { 'Accept': 'application/sparql-results+json' };
 		var fullUrl = endpointUrl + '?query=' + encodeURIComponent(query);
@@ -79,11 +80,20 @@ exports.homePage = function (req, res) {
 			}
 
 			var jsonData = JSON.parse(body);
-			var test = modifyData.cleanData(jsonData);
-			req.session.data = modifyData.groupItems(test.results.bindings);
+			var cleanedData = modifyData.cleanData(jsonData);
+			var keys = cleanedData.results.bindings.map(item => item.type.value);
+
+			req.session.data = modifyData.groupItems(cleanedData.results.bindings);
+			req.session.filterKeys = keys.filter((d, i, self) => i === self.indexOf(d));
+
+			// [req.session.data, res.session.filterKeys] = Promise.all([
+			// 	promiseGrouping,
+			// 	promiseFilterKeys
+			// ])
 
 			res.render('home', {
-				data: req.session.data
+				data: req.session.data,
+				filterKeys: req.session.filterKeys
 			});
 		});
 	}
@@ -102,3 +112,39 @@ exports.detailPage = function (req, res) {
 		building: building[0]
 	})
 }
+
+exports.getBuildingsByKey = function (req, res) {
+	var data = req.session.data.filter(function (item) {
+	// req.session.data = req.session.data.filter(function (item) {
+		return req.body.key.includes(item.type.value);
+	});
+
+	var activeKeys = data.map(item => item.type.value).filter((d, i, self) => i === self.indexOf(d));
+
+	res.render('home', {
+		data: data,
+		filterKeys: req.session.filterKeys,
+		activeKeys: activeKeys
+	});
+
+	// res.redirect('/buildings');
+}
+
+// exports.filteredView = function (req, res) {
+// 	if (!req.session.activeKeys) {
+// 		res.redirect('/');
+// 	}
+
+// 	var data = req.session.data.filter(function (item) {
+// 		// req.session.data = req.session.data.filter(function (item) {
+// 		return req.session.activeKeys.includes(item.type.value);
+// 	});
+
+// 	res.send(req.session.activeKeys)
+
+// 	res.render('home', {
+// 		data: data,
+// 		filterKeys: req.session.filterKeys,
+// 		activeKeys: req.session.activeKeys
+// 	});
+// }

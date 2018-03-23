@@ -40,9 +40,12 @@ Thinking about wha to do and how..... want to use wafs man....
 
 Get the core functionality together for now:
 - List all buildings
-- Filter on specific buildings
-- Get buildings between a specific time of from a specific time
 - Get details from building
+- Filter on specific buildings
+
+**Extra:**
+- Get buildings between a specific time of from a specific time
+- Search on name
 
 BTW: the data is not super accurate as the data comes from wikidata where everybody can add data as they want to.
 And The build and demolish years, I hard coded in it.
