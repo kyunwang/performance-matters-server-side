@@ -16,6 +16,7 @@ require('dotenv').config({ path: './vars.env' });
 app
 	// .use(express.static('public'))
 	.use(express.static(path.join(__dirname, '/public/')))
+	.use(express.static(path.join(__dirname, '/dist/')))
 	.set('view engine', 'pug')
 	.set('views', 'views')
 	.use(bodyParser.json())

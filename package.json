@@ -4,7 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon --exec babel-node server.js",
+    "start": "nodemon server.js",
+	 "watch": "watchify public/index.js --outfile dist/bundle.js & nodemon server.js",
+	 "build": "browserify public/index.js > dist/bundle.js && uglifyjs dist/bundle.js --compress --output dist/bundle.js",
+    "pull": "git fetch && git pull",
     "eslint:init": "eslint --init",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -26,6 +29,7 @@
     "request": "^2.85.0"
   },
   "devDependencies": {
+    "browserify": "^16.1.1",
     "dotenv": "^5.0.1",
     "eslint": "^4.19.0",
     "eslint-config-standard": "^11.0.0",
@@ -33,7 +37,9 @@
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-standard": "^3.0.1",
-    "nodemon": "^1.17.2"
+    "nodemon": "^1.17.2",
+    "uglify-js": "^3.3.16",
+    "watchify": "^3.11.0"
   },
   "babel": {}
 }
