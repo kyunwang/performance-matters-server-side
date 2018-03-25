@@ -6,7 +6,9 @@
 	"scripts": {
 		"start": "nodemon server.js --inspector",
 		"watch": "watchify src/index.js --outfile dist/bundle.js & nodemon server.js",
-		"build": "browserify src/index.js > dist/bundle.js && uglifyjs dist/bundle.js --compress --output dist/bundle.js",
+		"build:js": "browserify src/index.js > dist/bundle.js && uglifyjs dist/bundle.js --compress --output dist/bundle.js",
+		"build:css": "browserify -t browserify-css dist/bundle.js > dist/bundle.js",
+		"build": "npm run build:js && npm run build:css",
 		"pull": "git fetch && git pull",
 		"eslint:init": "eslint --init",
 		"test": "echo \"Error: no test specified\" && exit 1"
@@ -47,7 +49,7 @@
 	"browserify": {
 		"transform": [
 			[
-				"browserify-ngannotate",
+				"browserify-css",
 				{
 					"minify": true
 				}
