@@ -32,6 +32,11 @@ The tools for this project is:
 - NPM scripts: for requiring JS modules client-side
 - CommonJS: to run our browserify who bundles our JS which uses CommonJS
 
+### Bundling Tools
+The tools used for bundling:
+- [browserify-css](https://github.com/cheton/browserify-css)
+- [uglify-js](https://github.com/mishoo/UglifyJS2)
+- []()
 
 ## Optimalisation
 
