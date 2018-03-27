@@ -1,6 +1,6 @@
 # performance-matters-server-side
 
-Try to use only ES5 (will use template literals somethimes cus..... dang concatenation)
+Trying to use only ES5 (will use template literals somethimes cus..... dang concatenation)
 
 ## Table of Contents
 - [Getting Started](#getting-started)
