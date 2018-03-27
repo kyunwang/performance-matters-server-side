@@ -6,8 +6,14 @@ Trying to use only ES5 (will use template literals somethimes cus..... dang conc
 - [Getting Started](#getting-started)
 - [Building](#building)
 - [Tooling](#tooling)
+- [Audit](#audit)
+	- [Setting & Tools](#settings-&-tools)
+	- [Browser](#browser)
+	- [Tools](#tools)
 - [Optimalisation](#optimalisation)
-- [Empty as for now](#)
+	- [First snapshot](#first-snapshot)
+	- [](#)
+	- [](#)
 
 ## Getting started
 
@@ -38,11 +44,121 @@ The tools used for bundling:
 - [uglify-js](https://github.com/mishoo/UglifyJS2)
 - []()
 
+## Audit
+The audits will be based on the *Homepage*
+
+### Settings & Tools
+The settings and tools used for the audit.
+
+- Disable cache 
+- Throttle: 3G Slow
+#### Browser
+- Google Chrome
+- (maybe firefox quantum / safari)
+
+#### Tools
+- Google Chrome Devtools
+	- Network
+	- Timeline
+	- Audits
+
 ## Optimalisation
 
-1. The bundling of Javascript and minifying it. Using `uglify-js`
+1. The bundling of Javascript and minifying it. Using `uglify-js` (First audit)
 2. Using the `compression` package
 3. Minify css
+
+### First snapshot
+The first snapshot is made after bundling the JS with `Browserify`
+
+**Stats:**
+
+Network tab
+- 3 Requests
+- 14.7 KB Transferred
+- Finish: 4.26s
+- DOMContentLoaded: 4.27s
+- Load: 4.26s
+
+- First paint happens around 1200ms.
+- First and Consistently Interactive 1220ms
+
+
+![before summary][b-sum]
+![before performance][b-perf]
+
+
+### Inject CSS
+Injecting CSS and minifying with `browserify-css` into the head tag
+
+Network tab
+- 2 Requests
+- 17.1 KB Transferred
+- Finish: 4.32s
+- DOMContentLoaded: 4.34s
+- Load: 4.34s
+
+- First paint happens around 670ms.
+- First and Consistently Interactive 1360ms
+
+**Notes**
+- The performance point dropped from 100 to 99.
+- The first paint time almost decreased by a half
+- 140 ms increase in First interactive
+- A relatively high increase in transferred kb
+
+I still think it is worth the cost because of the decrease in the first meaningful paint.
+
+### Compression
+
+Network tab
+- 3 Requests
+- 4.3 KB Transferred
+- Finish: 4.10s
+- DOMContentLoaded: 4.10s
+- Load: 4.10s
+
+- First paint happens around 1210ms.
+- First and Consistently Interactive 1220ms
+
+**Notes**
+- The first paint time had a minimal increase of 10ms
+- The total transferred kb decreased significantly from 17.1kb to 4.3kb
+
+### Async & Defer
+Added `async` and `defer` to the import of `bundle.js`
+
+
+
+### Final result
+This is the result of all the optimalisations together.
+
+Network tab
+- 2 Requests
+- 8.0 KB Transferred
+- Finish: 4.16s
+- DOMContentLoaded: 2.07s
+- Load: 4.16s
+
+- First paint happens around 640ms.
+- First and Consistently Interactive 1330ms
+
+![after summary][a-sum]
+![after performance][a-perf]
+
+**Conclusion**
+At last there seems to be a increase in the first and consitently interactive state. The first meaningfull paint did improve a lot. Because of the injected CSS there is a increase of KB transferred but also a decrease in the first meaninfull paint.
+
+
+*Note: Not a lot optimalisation due to time contrains.*
+
+### To look into
+What else can you do to optimize:
+- Spend more time for critical CSS
+- Maybe lazy load the content (is that possible throught the server?)
+
+
+
 
 
 -------- Random stuff below ^^
@@ -70,7 +186,7 @@ Creating a setup with packages I think I might need
 
 
 ## Core functionality
-Thinking about wha to do and how..... want to use wafs man....
+Thinking about wha to do and how..... 
 
 Get the core functionality together for now:
 - List all buildings
@@ -97,3 +213,10 @@ Todo: clean helpers and check what is needed. Know more....
 
 
 [express-base]: https://github.com/cmda-minor-web/performance-matters-bootstrap/blob/master/examples/simple-server/server.js
+
+[b-perf]: https://github.com/kyunwang/performance-matters-server-side/blob/master/docs/b-perf.png
+[b-sum]: https://github.com/kyunwang/performance-matters-server-side/blob/master/docs/b-sum.png
+
+[a-perf]: https://github.com/kyunwang/performance-matters-server-side/blob/master/docs/a-perf.png
+[a-sum]: https://github.com/kyunwang/performance-matters-server-side/blob/master/docs/a-sum.png
+[]: s
