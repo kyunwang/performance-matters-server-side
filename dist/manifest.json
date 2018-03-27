@@ -5,7 +5,10 @@
 	"dir": "auto",
 	"display": "standalone",
 	"background_color": "#fafafa",
-	"theme_color": "",
 	"description": "",
-	"icons": [{}]
+	"icons": [{
+		"src": "/letter-a.png",
+		"sizes": "240x240",
+		"type": "image/png"
+	}]
 }

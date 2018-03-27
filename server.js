@@ -20,7 +20,7 @@ app.set('view engine', 'pug')
 	.set('views', 'views');
 
 // Set static route
-app.use('/public', express.static(path.join(__dirname, '/dist/'), { maxAge: '31d' }));
+app.use('/', express.static(path.join(__dirname, '/dist/'), { maxAge: '31d' }));
 
 app.use(bodyParser.json())
 	.use(bodyParser.urlencoded({ extended: false }))
