@@ -19,6 +19,16 @@ html
 		footer This is the footer
 		
 		script(src="/public/bundle.js" async="true" defer="true")
-
+		script.
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('../serviceWorker.js')
+					.then(function(registration) {
+						console.log('You got your shit together mate!', registration)
+					}).catch(function(err) {
+						console.log('Failed to register service worker')
+					});
+			} else {
+				console.log('No support for service workers omg')
+			}
 			
 				

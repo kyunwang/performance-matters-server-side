@@ -1,0 +1,11 @@
+{
+	"name": "Religious Buildings in Amsterdam",
+	"short_name": "Religious Buildings A'dam",
+	"start_url": ".",
+	"dir": "auto",
+	"display": "standalone",
+	"background_color": "#fafafa",
+	"theme_color": "",
+	"description": "",
+	"icons": [{}]
+}
