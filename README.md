@@ -1,5 +1,7 @@
 # performance-matters-server-side
 
+![Demo][rba-demo]
+
 *Note: Trying to use only ES5 (will use template literals somethimes cus..... dang concatenation)*
 
 ## Table of Contents
@@ -242,4 +244,5 @@ Todo: clean helpers and check what is needed. Know more....
 
 [a-perf]: https://github.com/kyunwang/performance-matters-server-side/blob/master/docs/a-perf.png
 [a-sum]: https://github.com/kyunwang/performance-matters-server-side/blob/master/docs/a-sum.png
-[]: s
+
+[rba-demo]: https://github.com/kyunwang/performance-matters-server-side/blob/master/docs/rba-demo.gif
