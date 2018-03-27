@@ -8,14 +8,15 @@ block header
 		h1 #{building.itemLabel.value}
 
 block content
-	p Here a static google maps image
+	main
+		p Here a static google maps image
 
-	p #{building.buildYear} - #{building.demolishYear === 2018 ? 'Still standing strong' : building.demolishYear}
-	p This is a: #{building.type.value}
+		p #{building.buildYear} - #{building.demolishYear === 2018 ? 'Still standing strong' : building.demolishYear}
+		p This is a: #{building.type.value}
 
-	.building-images
-		each image in building.image.value
-			//- pre #{h.dump(image)}
-			img(src=image, alt="")
-			
-		//- pre #{h.dump(building)}
+		.building-images
+			each image in building.image.value
+				//- pre #{h.dump(image)}
+				img(src=image, alt="")
+				
+			//- pre #{h.dump(building)}

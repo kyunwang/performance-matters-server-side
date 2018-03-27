@@ -1,10 +1,15 @@
 # performance-matters-server-side
 
-Try to use only ES5 (will use template literals somethimes cus..... dang concatenation)
+Trying to use only ES5 (will use template literals somethimes cus..... dang concatenation)
 
 ## Table of Contents
+- [Getting Started](#getting-started)
+- [Building](#building)
+- [Tooling](#tooling)
+- [Optimalisation](#optimalisation)
+- [Empty as for now](#)
 
-### Getting started
+## Getting started
 
 If you want to work on this project, follow these steps:
 1. First we clone (fork if you want) the repo.
@@ -13,6 +18,35 @@ If you want to work on this project, follow these steps:
 3. Run `npm start` to run the server
 4. Go to `http://localhost:3500/`
 5. Have fun!
+
+## Building
+To build the project you have to follow the steps from **[Getting Started](#getting-started)** first.
+The now you can build it by running: `npm run build` you will get the bundled and minified/uglified javascript.
+
+*Note*: Running `npm run watch` will also bundle the javascript, but will not minify.
+
+
+## Tooling
+The tools for this project is:
+- Browserify - (with its plugins) - for our JS bundling
+- NPM scripts: for requiring JS modules client-side
+- CommonJS: to run our browserify who bundles our JS which uses CommonJS
+
+### Bundling Tools
+The tools used for bundling:
+- [browserify-css](https://github.com/cheton/browserify-css)
+- [uglify-js](https://github.com/mishoo/UglifyJS2)
+- []()
+
+## Optimalisation
+
+1. The bundling of Javascript and minifying it. Using `uglify-js`
+2. Using the `compression` package
+3. Minify css
+
+
+-------- Random stuff below ^^
+
 
 ## Setup server
 Ofcourse I need to setup the server first. I did not remember how to do that on top of my hat(head) - You got it? 😏
@@ -59,7 +93,7 @@ Todo: clean helpers and check what is needed. Know more....
 
 
 ## Todo
-
+- offline support ?
 
 
 [express-base]: https://github.com/cmda-minor-web/performance-matters-bootstrap/blob/master/examples/simple-server/server.js

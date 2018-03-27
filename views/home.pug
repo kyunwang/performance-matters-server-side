@@ -2,18 +2,19 @@ extends layout
 
 include mixins/_buildingCard
 
+
 block content
-	form(action="/filter-buildings" method="POST")
-		each key in filterKeys
-			input(id=`key-${key}` type="checkbox", name="key" value=key checked=activeKeys ? activeKeys.includes(key) : !!key)
-			label(for=`key-${key}`) #{key}
+	main.no-padding
+		form(action="/filter-buildings" method="POST")
+			each key in filterKeys
+				input(id=`key-${key}` type="checkbox", name="key" value=key checked=activeKeys ? activeKeys.includes(key) : !!key)
+				label(for=`key-${key}`) #{key}
 
-		noscript
-			input(type="submit", value="filter")
+			noscript
+				input(type="submit", value="filter")
+		//- pre #{h.dump(data)}
+		each building in data
+			//- p= building.itemLabel.value
+			+buildingCard(building)
 
-	//- pre #{h.dump(data)}
-	each building in data
-		//- p= building.itemLabel.value
-		+buildingCard(building)
-
-	//- code= h
+		//- code= h

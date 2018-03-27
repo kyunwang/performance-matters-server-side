@@ -1,45 +1,57 @@
 {
-  "name": "religious-buildings-amsterdam-server-side",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
-  "scripts": {
-    "start": "nodemon server.js",
-	 "watch": "watchify public/index.js --outfile dist/bundle.js & nodemon server.js",
-	 "build": "browserify public/index.js > dist/bundle.js && uglifyjs dist/bundle.js --compress --output dist/bundle.js",
-    "pull": "git fetch && git pull",
-    "eslint:init": "eslint --init",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kyunwang/performance-matters-server-side.git"
-  },
-  "author": "Kang Yun Wang - Kevin Wang <kevinwang8011@hotmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/kyunwang/performance-matters-server-side/issues"
-  },
-  "homepage": "https://github.com/kyunwang/performance-matters-server-side#readme",
-  "dependencies": {
-    "body-parser": "^1.18.2",
-    "express": "^4.16.3",
-    "express-session": "^1.15.6",
-    "pug": "^2.0.1",
-    "request": "^2.85.0"
-  },
-  "devDependencies": {
-    "browserify": "^16.1.1",
-    "dotenv": "^5.0.1",
-    "eslint": "^4.19.0",
-    "eslint-config-standard": "^11.0.0",
-    "eslint-plugin-import": "^2.9.0",
-    "eslint-plugin-node": "^6.0.1",
-    "eslint-plugin-promise": "^3.7.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "nodemon": "^1.17.2",
-    "uglify-js": "^3.3.16",
-    "watchify": "^3.11.0"
-  },
-  "babel": {}
+	"name": "religious-buildings-amsterdam-server-side",
+	"version": "1.0.0",
+	"description": "",
+	"main": "server.js",
+	"scripts": {
+		"start": "nodemon server.js --inspector",
+		"watch": "watchify src/index.js --outfile dist/bundle.js & nodemon server.js",
+		"build": "browserify src/index.js > dist/bundle.js && uglifyjs dist/bundle.js --compress --output dist/bundle.js",
+		"pull": "git fetch && git pull",
+		"eslint:init": "eslint --init",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/kyunwang/performance-matters-server-side.git"
+	},
+	"author": "Kang Yun Wang - Kevin Wang <kevinwang8011@hotmail.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/kyunwang/performance-matters-server-side/issues"
+	},
+	"homepage": "https://github.com/kyunwang/performance-matters-server-side#readme",
+	"dependencies": {
+		"body-parser": "^1.18.2",
+		"browserify-css": "^0.14.0",
+		"compression": "^1.7.2",
+		"express": "^4.16.3",
+		"express-session": "^1.15.6",
+		"pug": "^2.0.1",
+		"request": "^2.85.0"
+	},
+	"devDependencies": {
+		"browserify": "^16.1.1",
+		"dotenv": "^5.0.1",
+		"eslint": "^4.19.0",
+		"eslint-config-standard": "^11.0.0",
+		"eslint-plugin-import": "^2.9.0",
+		"eslint-plugin-node": "^6.0.1",
+		"eslint-plugin-promise": "^3.7.0",
+		"eslint-plugin-standard": "^3.0.1",
+		"nodemon": "^1.17.2",
+		"uglify-js": "^3.3.16",
+		"watchify": "^3.11.0"
+	},
+	"babel": {},
+	"browserify": {
+		"transform": [
+			[
+				"browserify-css",
+				{
+					"minify": true
+				}
+			]
+		]
+	}
 }
