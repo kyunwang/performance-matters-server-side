@@ -1,6 +1,6 @@
 # performance-matters-server-side
 
-Trying to use only ES5 (will use template literals somethimes cus..... dang concatenation)
+*Note: Trying to use only ES5 (will use template literals somethimes cus..... dang concatenation)*
 
 ## Table of Contents
 - [Getting Started](#getting-started)
@@ -12,8 +12,12 @@ Trying to use only ES5 (will use template literals somethimes cus..... dang conc
 	- [Tools](#tools)
 - [Optimalisation](#optimalisation)
 	- [First snapshot](#first-snapshot)
-	- [](#)
-	- [](#)
+	- [Inject CSS](#inject-css)
+	- [Compression](#compression)
+	- [Final Result](#final-result)
+- [Service Worker](#service-worker)
+	- [Job story](#job-story)
+- [To do](#to-do)
 
 ## Getting started
 
@@ -157,7 +161,26 @@ What else can you do to optimize:
 - Spend more time for critical CSS
 - Maybe lazy load the content (is that possible throught the server?)
 
+## Service worker
+We will be implementing a service worker for at least the following:
+- Caching static assets and serve them
+- Give feedback to the user wether they are online or not
 
+Extra:
+- Cache the homepage
+- Be able to cache visited detail pages
+
+### Job story
+
+Template: *When ____, I want to ____, So I can ____*
+
+**Job story**
+When I am visiting Amsterdam, I want to visit religious buildings without using too much data, So I can quickly and cheaply visit the places I wan to go to.
+
+
+## To do
+- [] Add a static map using google maps in the detail page
+- [] Fix some styling
 
 
 
