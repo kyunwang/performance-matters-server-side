@@ -25,7 +25,7 @@ app.use('/', express.static(path.join(__dirname, '/dist/'), { maxAge: '31d' }));
 app.use(bodyParser.json())
 	.use(bodyParser.urlencoded({ extended: false }))
 	.use(session({
-		secret: process.env.SESSION_SECRET,
+		secret: 'SUPERduper98161SecretForEveryone!!!!',
 		resave: false,
 		saveUninitialized: true,
 		// cookie: { secure: false, maxAge: 6000// 6 Seconds }

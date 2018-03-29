@@ -34,11 +34,13 @@ img {
 	}
 }
 
-a {
+a,
+a:visited {
 	color: #3f3f3f;
+	text-decoration: none;
 }
 
-a:visited,
+a:hover,
 a:focus {
 	color: skyblue;
 	text-decoration: none;
@@ -61,7 +63,9 @@ a:focus {
 }
 
 [type="checkbox"] + label:hover,
-[type="checkbox"] + label:focus {
+[type="checkbox"] + label:focus
+[type="checkbox"]:checked + label:focus,
+[type="checkbox"]:checked + label:hover {
 	color: skyblue;
 }
 
@@ -80,10 +84,12 @@ a:focus {
 .building {
 	display: block;
 	font-size: 1.6em;
+	color: #3f3f3f;
 	background-color: #fff;
 	padding: 1em 2em;
 	transition: box-shadow .2s ease-in;
 	transition: transform .2s ease-in;
+	text-decoration: none;
 }
 
 .building:hover,
@@ -95,7 +101,6 @@ a:focus {
 .building:visited {
 	color: #3f3f3f;
 }
-
 
 /*==========================
 === Offline block
