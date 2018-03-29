@@ -239,10 +239,10 @@ Todo: clean helpers and check what is needed. Know more....
 
 [express-base]: https://github.com/cmda-minor-web/performance-matters-bootstrap/blob/master/examples/simple-server/server.js
 
-[b-perf]: https://github.com/kyunwang/performance-matters-server-side/blob/master/docs/b-perf.png
-[b-sum]: https://github.com/kyunwang/performance-matters-server-side/blob/master/docs/b-sum.png
+[b-perf]: https://github.com/kyunwang/performance-matters-server-side/blob/master/doc/b-perf.png
+[b-sum]: https://github.com/kyunwang/performance-matters-server-side/blob/master/doc/b-sum.png
 
-[a-perf]: https://github.com/kyunwang/performance-matters-server-side/blob/master/docs/a-perf.png
-[a-sum]: https://github.com/kyunwang/performance-matters-server-side/blob/master/docs/a-sum.png
+[a-perf]: https://github.com/kyunwang/performance-matters-server-side/blob/master/doc/a-perf.png
+[a-sum]: https://github.com/kyunwang/performance-matters-server-side/blob/master/doc/a-sum.png
 
-[rba-demo]: https://github.com/kyunwang/performance-matters-server-side/blob/master/docs/rba-demo.gif
+[rba-demo]: https://github.com/kyunwang/performance-matters-server-side/blob/master/doc/rba-demo.gif

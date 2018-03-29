@@ -15,7 +15,9 @@ self.addEventListener('install', event => event.waitUntil(
 self.addEventListener('fetch', event => {
 	const request = event.request;
 	// If it is a navigating request e.g. change in url
-	if (request.mode === 'navigate') {
+	console.log(request.url);
+
+	if (request.mode === 'navigate' || request.url.match('.jpg|.jpeg|.png|.gif')) {
 		event.respondWith(
 			fetch(request)
 				// Cache the page
