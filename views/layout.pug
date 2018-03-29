@@ -1,12 +1,18 @@
 
-html
+html(lang="en")
 	head
 		title Religious Buildings Amsterdam
-		//- link(rel="stylesheet", href="/public/style.css" type="text/css")
-		
+		//- link(rel="stylesheet", href="/style.css" type="text/css")
 		meta(name="viewport" content="width=device-width, initial-scale=1")
+		meta(name="theme-color" content="#3f3f3f")
+		link(rel="manifest", href="/manifest.json")
+		noscript
+			link(rel="stylesheet", href="/style.css")
 	body
-		block header 
+		p.offline.hidden You are offline
+			
+
+		block header
 			header
 				h1 Religious buildings Amsterdam
 
@@ -16,9 +22,18 @@ html
 		//- block footer
 			footer This is the footer
 		
-		footer This is the footer
-		
-		script(src="/public/bundle.js" async="true" defer="true")
-
+		script(src="/bundle.js" async="true" defer="true")
+		script.
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/serviceWorker.js')
+				//- navigator.serviceWorker.register('../serviceWorker.js')
+					.then(function(registration) {
+						console.log('You got your shit together mate!', registration)
+					}).catch(function(err) {
+						console.log('Failed to register service worker')
+					});
+			} else {
+				console.log('No support for service workers omg')
+			}
 			
 				

@@ -1,6 +1,20 @@
-# performance-matters-server-side
+# Religious Buildings in Amsterdam - (Server rendered)
 
-Trying to use only ES5 (will use template literals somethimes cus..... dang concatenation)
+This is a server-side version focused on the core functions based on [this repo](https://github.com/kyunwang/Religious-Buildings-Amsterdam)
+
+As you can see in the demo(the gif) a simple list will be shown with various religious buildings in Amsterdam. You can filter and see some details about the building.
+
+The goal of this project is to server-side render the application while focussing on the core functionality. The repo linked above is fully client-side which is somewhat slower than server-side rendered applications. This server-side rendered application should be faster than the client-side rendered one.
+
+This repo makes use of:
+- Browserify (bundling)
+- Pug (templating)
+- Express.js
+- A service worker
+
+![Demo][rba-demo]
+
+*Note: Trying to use only ES5 (will use template literals somethimes cus..... dang concatenation)*
 
 ## Table of Contents
 - [Getting Started](#getting-started)
@@ -12,8 +26,16 @@ Trying to use only ES5 (will use template literals somethimes cus..... dang conc
 	- [Tools](#tools)
 - [Optimalisation](#optimalisation)
 	- [First snapshot](#first-snapshot)
-	- [](#)
-	- [](#)
+	- [Inject CSS](#inject-css)
+	- [Compression](#compression)
+	- [Final Result](#final-result)
+- [Service Worker](#service-worker)
+	- [Job story](#job-story)
+	- [Impact](#impact)
+	- [Online](#online)
+	- [Offline](#offline)
+	- [Conclusion](#conclusion)
+- [To do](#to-do)
 
 ## Getting started
 
@@ -157,7 +179,57 @@ What else can you do to optimize:
 - Spend more time for critical CSS
 - Maybe lazy load the content (is that possible throught the server?)
 
+## Service worker
+We will be implementing a service worker for at least the following:
+- Caching static assets and serve them
+- Give feedback to the user wether they are online or not
 
+Extra:
+- Cache the homepage
+- Be able to cache visited detail pages
+
+### Job story
+
+Template: *When ____, I want to ____, So I can ____*
+
+**Job story**
+When I am visiting Amsterdam, I want to visit religious buildings without using too much data, So I can quickly and cheaply visit the places I wan to go to.
+
+### Impact
+The impact that the service worker has/might bring.
+
+**These audits are made after the caching.**
+
+#### Online
+Network tab
+- 3 Requests
+- 4.8 KB Transferred
+- Finish: 107ms
+- DOMContentLoaded: 106ms
+- Load: 114ms
+
+- First paint happens around 650ms.
+- First and Consistently Interactive 650ms
+
+#### Offline
+Network tab
+- 3 Requests
+- 0 KB Transferred
+- Finish: 34ms
+- DOMContentLoaded: 27ms
+- Load: 37ms
+
+#### Conclusion
+The service worker really did speed up the page loads (after the first caching) by a huge margin.
+
+Offline it is even quicker and it is certainly worth it to implement a service worker.
+
+**I need to learn more of it though**
+
+
+## To do
+- [] Add a static map using google maps in the detail page
+- [] Fix some styling
 
 
 
@@ -214,9 +286,10 @@ Todo: clean helpers and check what is needed. Know more....
 
 [express-base]: https://github.com/cmda-minor-web/performance-matters-bootstrap/blob/master/examples/simple-server/server.js
 
-[b-perf]: https://github.com/kyunwang/performance-matters-server-side/blob/master/docs/b-perf.png
-[b-sum]: https://github.com/kyunwang/performance-matters-server-side/blob/master/docs/b-sum.png
+[b-perf]: https://github.com/kyunwang/performance-matters-server-side/blob/master/doc/b-perf.png
+[b-sum]: https://github.com/kyunwang/performance-matters-server-side/blob/master/doc/b-sum.png
 
-[a-perf]: https://github.com/kyunwang/performance-matters-server-side/blob/master/docs/a-perf.png
-[a-sum]: https://github.com/kyunwang/performance-matters-server-side/blob/master/docs/a-sum.png
-[]: s
+[a-perf]: https://github.com/kyunwang/performance-matters-server-side/blob/master/doc/a-perf.png
+[a-sum]: https://github.com/kyunwang/performance-matters-server-side/blob/master/doc/a-sum.png
+
+[rba-demo]: https://github.com/kyunwang/performance-matters-server-side/blob/master/doc/rba-demo.gif

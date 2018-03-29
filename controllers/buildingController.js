@@ -101,6 +101,12 @@ exports.homePage = function (req, res) {
 
 exports.detailPage = function (req, res) {
 	var buildingName = req.params.name;
+
+	if (!req.session.data) {
+		res.redirect('/');
+		return;
+	}
+
 	var building = req.session.data.filter(function (building) {
 		return building.itemLabel.value === buildingName;
 	})
