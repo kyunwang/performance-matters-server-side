@@ -34,12 +34,19 @@ img {
 	}
 }
 
-a,
+a {
+	color: #3f3f3f;
+}
+
 a:visited,
 a:focus {
-	color: #3f3f3f;
+	color: skyblue;
 	text-decoration: none;
 }
+
+/*==========================
+=== Filter input
+===========================*/
 
 [type="checkbox"] {
 	position: absolute;
@@ -53,6 +60,11 @@ a:focus {
 	color: #9f9f9f;
 }
 
+[type="checkbox"] + label:hover,
+[type="checkbox"] + label:focus {
+	color: skyblue;
+}
+
 [type="checkbox"] + label:not(:first-of-type) {
 	margin-left: 2em;
 }
@@ -61,12 +73,17 @@ a:focus {
   color: #3f3f3f;
 }
 
+/*==========================
+=== Builing cards
+===========================*/
+
 .building {
 	display: block;
 	font-size: 1.6em;
 	background-color: #fff;
 	padding: 1em 2em;
-	transition: all .2s ease-in;
+	transition: box-shadow .2s ease-in;
+	transition: transform .2s ease-in;
 }
 
 .building:hover,
@@ -75,6 +92,29 @@ a:focus {
 	transform: scale(1.05);
 }
 
+.building:visited {
+	color: #3f3f3f;
+}
+
+
+/*==========================
+=== Offline block
+===========================*/
+.offline {
+	position: absolute;
+	top: 0;
+	text-align: center;
+	width: 100%;
+	height: 2em;
+}
+
+
+/*==========================
+=== Others
+===========================*/
+.hidden {
+	display: none;
+}
 
 .no-padding {
 	padding: 0;
