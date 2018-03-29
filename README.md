@@ -1,4 +1,16 @@
-# performance-matters-server-side
+# Religious Buildings in Amsterdam - (Server rendered)
+
+This is a server-side version focused on the core functions based on [this repo](https://github.com/kyunwang/Religious-Buildings-Amsterdam)
+
+As you can see in the demo(the gif) a simple list will be shown with various religious buildings in Amsterdam. You can filter and see some details about the building.
+
+The goal of this project is to server-side render the application while focussing on the core functionality. The repo linked above is fully client-side which is somewhat slower than server-side rendered applications. This server-side rendered application should be faster than the client-side rendered one.
+
+This repo makes use of:
+- Browserify (bundling)
+- Pug (templating)
+- Express.js
+- A service worker
 
 ![Demo][rba-demo]
 
@@ -19,6 +31,10 @@
 	- [Final Result](#final-result)
 - [Service Worker](#service-worker)
 	- [Job story](#job-story)
+	- [Impact](#impact)
+	- [Online](#online)
+	- [Offline](#offline)
+	- [Conclusion](#conclusion)
 - [To do](#to-do)
 
 ## Getting started
@@ -178,6 +194,37 @@ Template: *When ____, I want to ____, So I can ____*
 
 **Job story**
 When I am visiting Amsterdam, I want to visit religious buildings without using too much data, So I can quickly and cheaply visit the places I wan to go to.
+
+### Impact
+The impact that the service worker has/might bring.
+
+**These audits are made after the caching.**
+
+#### Online
+Network tab
+- 3 Requests
+- 4.8 KB Transferred
+- Finish: 107ms
+- DOMContentLoaded: 106ms
+- Load: 114ms
+
+- First paint happens around 650ms.
+- First and Consistently Interactive 650ms
+
+#### Offline
+Network tab
+- 3 Requests
+- 0 KB Transferred
+- Finish: 34ms
+- DOMContentLoaded: 27ms
+- Load: 37ms
+
+#### Conclusion
+The service worker really did speed up the page loads (after the first caching) by a huge margin.
+
+Offline it is even quicker and it is certainly worth it to implement a service worker.
+
+**I need to learn more of it though**
 
 
 ## To do

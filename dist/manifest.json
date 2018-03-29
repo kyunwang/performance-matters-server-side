@@ -1,14 +1,20 @@
 {
 	"name": "Religious Buildings in Amsterdam",
-	"short_name": "Religious Buildings A'dam",
+	"short_name": "Religious Around",
 	"start_url": ".",
 	"dir": "auto",
 	"display": "standalone",
 	"background_color": "#fafafa",
+	"theme_color": "#3f3f3f",
 	"description": "",
 	"icons": [{
-		"src": "/letter-a.png",
+		"src": "/letter-ax240.png",
 		"sizes": "240x240",
+		"type": "image/png"
+	},
+	{
+		"src": "/letter-ax512.png",
+		"sizes": "512x512",
 		"type": "image/png"
 	}]
 }
