@@ -28,12 +28,12 @@ html(lang="en")
 				navigator.serviceWorker.register('/serviceWorker.js')
 				//- navigator.serviceWorker.register('../serviceWorker.js')
 					.then(function(registration) {
-						console.log('You got your shit together mate!', registration)
+						console.log('Browser supports Service workers', registration)
 					}).catch(function(err) {
 						console.log('Failed to register service worker')
 					});
 			} else {
-				console.log('No support for service workers omg')
+				console.log('No support for service workers')
 			}
 			
 				
