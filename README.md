@@ -6,6 +6,8 @@ As you can see in the demo(the gif) a simple list will be shown with various rel
 
 The goal of this project is to server-side render the application while focussing on the core functionality. The repo linked above is fully client-side which is somewhat slower than server-side rendered applications. This server-side rendered application should be faster than the client-side rendered one.
 
+**Time for this project:** 2 days (from a week) + small adjustments
+
 This repo makes use of:
 - Browserify (bundling)
 - Pug (templating)
@@ -14,7 +16,7 @@ This repo makes use of:
 
 ![Demo][rba-demo]
 
-*Note: Trying to use only ES5 (will use template literals somethimes cus..... dang concatenation)*
+*Note: Trying to use only ES5. Template literals will be used instead of cancatenating*
 
 ## Table of Contents
 - [Getting Started](#getting-started)
@@ -64,7 +66,6 @@ The tools for this project is:
 The tools used for bundling:
 - [browserify-css](https://github.com/cheton/browserify-css)
 - [uglify-js](https://github.com/mishoo/UglifyJS2)
-- []()
 
 ## Audit
 The audits will be based on the *Homepage*
@@ -224,64 +225,11 @@ The service worker really did speed up the page loads (after the first caching) 
 
 Offline it is even quicker and it is certainly worth it to implement a service worker.
 
-**I need to learn more of it though**
-
 
 ## To do
-- [] Add a static map using google maps in the detail page
-- [] Fix some styling
+- [ ] Add a static map using google maps in the detail page
+- [ ] Fix some styling
 
-
-
--------- Random stuff below ^^
-
-
-## Setup server
-Ofcourse I need to setup the server first. I did not remember how to do that on top of my hat(head) - You got it? 😏
-
-I used [this][express-base] simple server as a base and also used the `request` package example.
-
-
-
-
-Overview for now
-
-Thinking about what to do....
-
-Creating a setup with packages I think I might need
-- nodemon
-- express
-- pug
-- dotenv
-- eslint
-- body-parser
-
-
-## Core functionality
-Thinking about wha to do and how..... 
-
-Get the core functionality together for now:
-- List all buildings
-- Get details from building
-- Filter on specific buildings
-
-**Extra:**
-- Get buildings between a specific time of from a specific time
-- Search on name
-
-BTW: the data is not super accurate as the data comes from wikidata where everybody can add data as they want to.
-And The build and demolish years, I hard coded in it.
-
-
-## 
-
-Add older script from client side version a.k.a. the helpers and made the query to the sparql/wikidata endpoint
-
-Todo: clean helpers and check what is needed. Know more....
-
-
-## Todo
-- offline support ?
 
 
 [express-base]: https://github.com/cmda-minor-web/performance-matters-bootstrap/blob/master/examples/simple-server/server.js
